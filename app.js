@@ -1,16 +1,22 @@
 const app = Vue.createApp({
-    data (){
+    data() {
         return {
-            firstName: 'Owden',
-            lastName: 'Godson',
+            firstName: 'First',
+            lastName: 'Last',
             gender: 'male',
-            email: 'owg@test.com',
-            picture: 'https://randomuser.me/api/portraits/women/29.jpg'
+            email: 'firstlast@test.com',
+            picture: 'https://randomuser.me/api/portraits/men/40.jpg'
         }
-    },
-    methods:{
-        generateUser(){
-            alert('Generate user')
+    }, methods: {
+        async generateUser() {
+            const result = await fetch('https://randomuser.me/api')
+            const {results} = await result.json()
+
+            this.firstName = results[0].name.first,
+            this.lastName = results[0].name.last,
+            this.gender = results[0].gender,
+            this.email = results[0].email,
+            this.picture = results[0].picture.large
         }
     }
 })

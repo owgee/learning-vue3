@@ -1,10 +1,26 @@
 <script setup>
 import jobData from '@/jobs.json';
-import {ref} from "vue";
+import {onMounted, ref} from "vue";
 import JobListing from "@/components/JobListing.vue";
 import {RouterLink} from "vue-router";
+import axios from 'axios';
 
-const jobs = ref(jobData) //we use ref to make jobData reactive
+const jobs = ref([]) //we use ref to make jobData reactive
+
+// let's get jobs data from an endpoint (in this case our json server)
+// import axios
+// make an async get request using axios
+// try and catch errors
+
+onMounted(async ()=>{
+try{
+  const response = await axios.get('http://localhost:4000/jobs');
+  jobs.value = response.data
+}catch(error){
+console.log("Error fetching jobs: ",error)
+}
+})
+
 defineProps({
   limit: Number,
   showMoreButton: {

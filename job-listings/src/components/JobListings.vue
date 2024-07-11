@@ -3,6 +3,8 @@ import jobData from '@/jobs.json';
 import {ref, defineProps} from "vue";
 import JobListing from "@/components/JobListing.vue";
 
+
+
 const jobs = ref(jobData) //we use ref to make jobData reactive
 defineProps({
   limit: Number,

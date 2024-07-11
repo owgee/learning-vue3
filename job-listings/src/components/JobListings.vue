@@ -4,21 +4,25 @@ import {onMounted, ref} from "vue";
 import JobListing from "@/components/JobListing.vue";
 import {RouterLink} from "vue-router";
 import axios from 'axios';
+import PulseSpinner from 'vue-spinner/src/PulseLoader.vue'
 
 const jobs = ref([]) //we use ref to make jobData reactive
+const isLoading = ref(true)
 
 // let's get jobs data from an endpoint (in this case our json server)
 // import axios
 // make an async get request using axios
 // try and catch errors
 
-onMounted(async ()=>{
-try{
-  const response = await axios.get('http://localhost:4000/jobs');
-  jobs.value = response.data
-}catch(error){
-console.log("Error fetching jobs: ",error)
-}
+onMounted(async () => {
+  try {
+    const response = await axios.get('http://localhost:4000/jobs');
+    jobs.value = response.data
+  } catch (error) {
+    console.log("Error fetching jobs: ", error)
+  } finally {
+    isLoading.value = false
+  }
 })
 
 defineProps({
@@ -36,17 +40,22 @@ defineProps({
       <h2 class="text-3xl font-bold text-green-500 mb-6 text-center">
         Browse Jobs
       </h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <JobListing v-for="job in jobs.slice(0,limit || jobs.length) " :key="job.id" :job="job" />
+      <!-- Show spinner loader -->
+      <div v-if="isLoading" class="text-center text-gray-500 mb-6">
+        <PulseSpinner/>
+      </div>
+      <div v-else class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <JobListing v-for="job in jobs.slice(0,limit || jobs.length) " :key="job.id" :job="job"/>
       </div>
     </div>
   </section>
   <section class="m-auto max-w-lg my-10 px-6" v-if="showMoreButton">
-      <RouterLink
+    <RouterLink
         to="/jobs"
         class="block bg-black text-white text-center py-4 px-6 rounded-xl hover:bg-gray-700"
-        >View All Jobs</RouterLink
-      >
-    </section>
+    >View All Jobs
+    </RouterLink
+    >
+  </section>
 
 </template>

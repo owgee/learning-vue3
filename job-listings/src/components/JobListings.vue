@@ -9,7 +9,7 @@ import PulseSpinner from 'vue-spinner/src/PulseLoader.vue'
 const jobs = ref([]) //we use ref to make jobData reactive
 const isLoading = ref(true)
 
-// let's get jobs data from an endpoint (in this case our json server)
+// let's get jobs data from an endpoint (in this case our mock json server)
 // import axios
 // make an async get request using axios
 // try and catch errors

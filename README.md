@@ -1,4 +1,4 @@
-# Learning Vue 3
+# Vue 3
 
 This project is a simple Vue 3 application that generates a random user from the [Random User API](https://randomuser.me/api).
 

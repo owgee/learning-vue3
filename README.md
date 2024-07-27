@@ -31,6 +31,7 @@ Once the application is running, you can generate a random user by clicking the 
 - `index.html` - Main HTML file with Vue 3 CDN.
 - `style.css` - Basic styling for the application.
 - `app.js` - Main JavaScript file with Vue functionality.
+- `job-listings` - Job listings application
 
 ### API
 

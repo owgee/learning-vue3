@@ -1,6 +1,9 @@
-# Vue 3
+# Vue 3 Projects
 
-This project is a simple Vue 3 application that generates a random user from the [Random User API](https://randomuser.me/api).
+This repository will have a couple of vue3 projects to help you get started with Vue
+
+1. in the root folder is a simple Vue 3 application that generates a random user from the [Random User API](https://randomuser.me/api).
+2. job-listings is a bit more complicated project that extends the powerful components, vue router and API for fetching jobs from an external source
 
 ## Getting Started
 
@@ -13,8 +16,8 @@ Ensure you have a modern web browser.
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/owgee/learning-vue3.git
-    cd learning-vue3
+    git clone https://github.com/owgee/vue-projects.git
+    cd vue-projects
     ```
 
 2. Open `index.html` in your browser to view the application.
